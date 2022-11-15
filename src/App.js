@@ -12,8 +12,14 @@ function App() {
 
   const formHandler = (e) => {
     e.preventDefault();
-    dispatch(addUser({ id: userList.length, name }))
-    setname("")
+    if (name === "") {
+      alert("enter details")
+    }
+    else {
+      dispatch(addUser({ id: userList.length, name }))
+      setname("")
+    }
+
   }
   const retrData = JSON.parse(localStorage.getItem("userData") || '[]');
 
