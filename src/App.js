@@ -12,13 +12,9 @@ function App() {
 
   const formHandler = (e) => {
     e.preventDefault();
-    if (name === "") {
-      alert("enter details")
-    }
-    else {
-      dispatch(addUser({ id: userList.length, name }))
-      setname("")
-    }
+    dispatch(addUser({ id: userList.length, name }))
+    setname("")
+
 
   }
   const retrData = JSON.parse(localStorage.getItem("userData") || '[]');
@@ -28,7 +24,7 @@ function App() {
       <div className="formContainer">
         <h1 className='h1'>Add User</h1>
         <form className='form' onSubmit={formHandler}>
-          <input type="text" placeholder='Details..' value={name} onChange={(e) => setname(e.target.value)} className="inputBox" />
+          <input type="text" placeholder='Details..' value={name} onChange={(e) => setname(e.target.value)} className="inputBox" required />
           <button type='submit' className='buttonStyles add'>ADD</button>
         </form>
         <div className='userDetsDiv'>
