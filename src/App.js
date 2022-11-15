@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { addUser, deleteUser } from "./features/user"
 function App() {
   const [name, setname] = useState("")
-
   const userList = useSelector((state) => state.users.value)
 
 
@@ -15,9 +14,9 @@ function App() {
     e.preventDefault();
     dispatch(addUser({ id: userList.length, name }))
     setname("")
-    console.log("userList", userList)
   }
-  const retrData = JSON.parse(localStorage.getItem("userData"));
+  const retrData = JSON.parse(localStorage.getItem("userData") || '[]');
+
   return (
     <div className="App">
       <div className="formContainer">
@@ -30,7 +29,7 @@ function App() {
           {
             retrData.map((e, i) => {
               return (
-                <div className='eachUser' >
+                <div className='eachUser' key={i} >
                   <div className='textDiv'>
                     <h3>
                       {e.name}
